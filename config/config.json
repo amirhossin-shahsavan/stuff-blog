@@ -1,0 +1,35 @@
+{
+  "name": "API Services Message",
+  "cors_url": "",
+  "server": {
+    "host": "0.0.0.0",
+    "port": 2000,
+    "ssl": {
+      "use": false,
+      "cert": "",
+      "privatekey": "",
+      "bundle": "",
+      "port": 443
+    },
+    "headerCode": {
+      "error": 400,
+      "unauth": 402,
+      "success": 200
+    }
+  },
+  "API": {
+    "baseurl": "/",
+    "doc": "/doc",
+    "jwtpass": "askjfuy98w67eytfgkhayf7wet",
+    "jwtexpire": "10d"
+  },
+  "db": {
+    "auth": false,
+    "url": "127.0.0.1",
+    "port": 27017,
+    "username": "",
+    "password": "",
+    "dbname": "stuff",
+    "dbauth": "admin"
+  }
+}
