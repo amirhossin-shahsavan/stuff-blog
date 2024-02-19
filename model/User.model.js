@@ -21,6 +21,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: [String],
+  type: {
+    type: String,
+    default: "",
+    enum: ["developer", "customer", "employer"],
+  },
   permission: {
     type: String,
     default: "user",
