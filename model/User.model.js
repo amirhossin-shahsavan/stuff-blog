@@ -21,7 +21,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: [String],
+  image: {
+    type: String,
+    default: "",
+  },
   type: {
     type: String,
     default: "",
