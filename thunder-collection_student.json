@@ -1,0 +1,157 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "student",
+    "dateExported": "2024-02-23T17:44:49.161Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "b76bd21e-673c-42fb-ba0d-9f769b55c23e",
+            "colId": "eb71d702-63df-4899-ab87-923963975755",
+            "containerId": "",
+            "name": "user register",
+            "url": "http://localhost:2000/user/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-23T17:44:01.148Z",
+            "modified": "2024-02-23T17:44:01.148Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"firstname\":\"amirhosin\", \n  \"lastname\":\"shahsavan\", \n  \"email\":\"amirhosinshahsavan@gmail.com\", \n  \"password\":\"123\", \n  \"type\":\"developer\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "36a5c55d-aaf8-4602-a239-07708a55d6a1",
+            "colId": "eb71d702-63df-4899-ab87-923963975755",
+            "containerId": "",
+            "name": "user login",
+            "url": "http://localhost:2000/user/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-23T17:44:06.516Z",
+            "modified": "2024-02-23T17:44:06.516Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"amirhosinshahsavan@gmail.com\", \n  \"password\":\"123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "238137ba-0ece-4649-abf1-85403b47c28f",
+            "colId": "eb71d702-63df-4899-ab87-923963975755",
+            "containerId": "",
+            "name": "get 12 new user",
+            "url": "http://localhost:2000/user/getlimit",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-23T17:44:11.342Z",
+            "modified": "2024-02-23T17:44:11.342Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "cebbd87c-5ace-4dc1-9013-4b5d648ac26c",
+            "colId": "eb71d702-63df-4899-ab87-923963975755",
+            "containerId": "",
+            "name": "upload user image",
+            "url": "http://localhost:2000/user/upload",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-02-23T17:44:16.009Z",
+            "modified": "2024-02-23T17:44:16.009Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDhkMjdjYWI5Zjg2NmJjMDNiZDkxMCIsImlhdCI6MTcwODcwODQ3OCwiZXhwIjoxNzA5NTcyNDc4fQ.4297svKWQwYS6E_tauqiYX1R0TJ6FFrgN2K8hvpy-nk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [],
+                "files": [
+                    {
+                        "name": "image",
+                        "value": "c:\\Users\\sazgar\\Desktop\\road-sign-361514_960_720.png"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "c7822931-f12e-4c75-902e-6931e20cdfbd",
+            "colId": "eb71d702-63df-4899-ab87-923963975755",
+            "containerId": "",
+            "name": "get image user link by user id",
+            "url": "http://localhost:2000/user/upload/65d8d27cab9f866bc03bd910",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-02-23T17:44:25.242Z",
+            "modified": "2024-02-23T17:44:25.242Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDhkMjdjYWI5Zjg2NmJjMDNiZDkxMCIsImlhdCI6MTcwODcwODQ3OCwiZXhwIjoxNzA5NTcyNDc4fQ.4297svKWQwYS6E_tauqiYX1R0TJ6FFrgN2K8hvpy-nk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "92054613-0b2c-4f0b-8987-a7333a3c5a1c",
+            "colId": "eb71d702-63df-4899-ab87-923963975755",
+            "containerId": "",
+            "name": "show user image",
+            "url": "http://localhost:2000/user/image/65d8d27cab9f866bc03bd910.png",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-02-23T17:44:29.202Z",
+            "modified": "2024-02-23T17:44:29.202Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDhkMjdjYWI5Zjg2NmJjMDNiZDkxMCIsImlhdCI6MTcwODcwODQ3OCwiZXhwIjoxNzA5NTcyNDc4fQ.4297svKWQwYS6E_tauqiYX1R0TJ6FFrgN2K8hvpy-nk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0f0d413c-0b92-48c2-a4cc-b028b57c014d",
+            "colId": "eb71d702-63df-4899-ab87-923963975755",
+            "containerId": "",
+            "name": "get one user",
+            "url": "http://localhost:2000/user/getone/65d8d27cab9f866bc03bd910",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-02-23T17:44:33.737Z",
+            "modified": "2024-02-23T17:44:33.737Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0cd25588-3804-4f34-a589-364d95a9621f",
+            "colId": "eb71d702-63df-4899-ab87-923963975755",
+            "containerId": "",
+            "name": "get all user ",
+            "url": "http://localhost:2000/user/all",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-02-23T17:44:37.557Z",
+            "modified": "2024-02-23T17:44:37.557Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

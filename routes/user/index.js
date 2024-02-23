@@ -51,7 +51,7 @@ router.post("/user/register", async function (req, res, next) {
       },
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.status(500).json({
       code: -10001,
       msg: "server crashed",
     });
@@ -98,20 +98,21 @@ router.post("/user/login", async function (req, res) {
     });
   } catch (error) {
     console.log(error);
-    return res.status(400).json({
+    return res.status(500).json({
       code: -10001,
       msg: "server crashed",
     });
   }
 });
 
-router.get("/user/getall", async (req, res, next) => {
+router.get("/user/getlimit", async (req, res, next) => {
   try {
     const userfound = await User.find({
       permission: "user",
       type: "developer",
     })
-      .select("-_id firstname lastname image")
+      .select("-_id firstname lastname")
+      .sort({ createdAt: -1 })
       .limit(12)
       .exec();
     return res.status(200).json({
@@ -119,8 +120,47 @@ router.get("/user/getall", async (req, res, next) => {
       data: userfound,
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.status(500).json({
       code: -10001,
+      msg: "server crashed",
+    });
+  }
+});
+
+router.get("/user/getone/:id", async (req, res, next) => {
+  const userid = req.params.id;
+  try {
+    const userfound = await User.findOne({ _id: userid }).select(
+      "-image -password"
+    );
+    if (!userfound) {
+      return res.status(404).json({
+        code: -137,
+        msg: "user not found",
+      });
+    }
+    return res.status(200).json({
+      code: 142,
+      data: userfound,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      code: -147,
+      msg: "server crashed",
+    });
+  }
+});
+
+router.get("/user/all", async (req, res, next) => {
+  try {
+    const userfound = await User.find({}).select("-image -password");
+    return res.status(200).json({
+      code: 157,
+      data: userfound,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      code: -162,
       msg: "server crashed",
     });
   }
@@ -128,7 +168,7 @@ router.get("/user/getall", async (req, res, next) => {
 
 ////////////////////////////IMAGES API
 
-router.get("/user/image/:name", auth, async (req, res, next) => {
+router.get("/user/image/:name", async (req, res, next) => {
   const name = req.params.name;
   res.sendFile(path.join(__dirname, "./../../file/images", name));
 });
@@ -169,8 +209,8 @@ router.post("/user/upload/", auth, async (req, res) => {
   }
 });
 
-router.get("/user/upload/", auth, async (req, res) => {
-  const userid = req.userAuth;
+router.get("/user/upload/:id", async (req, res) => {
+  const userid = req.params.id;
   try {
     const userfound = await User.findOne({ _id: userid });
     if (!userfound) {
