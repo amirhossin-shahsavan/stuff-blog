@@ -1,34 +1,24 @@
-volumes:
-  db:
-
+version: "3.8"
 services:
+  mongodb:
+    image: mongo:4.4.6
+    ports:
+      - "27017:27017"
+    volumes:
+      - dbdata6:/data/db
+
   app:
-    container_name: stuff-blog-docker
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "2000:2000"
     environment:
       - PORT=2000
-      - MONGODB_URI=ss
+      - MONGODB_URI=mongodb://mongodb:27017/admin
       - MONGODB_DATABASE=admin
-    volumes:
-      - .:/app
-      - /app/node_modules
     depends_on:
-      - db
-    links:
-      - db
+      - mongodb
 
-  db:
-    container_name: mongodb
-    image: mongo:latest
-    restart: always
-    volumes:
-      - db:/data/db
-    command: mongod
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
-      MONGO_INITDB_DATABASE: admin
-    ports:
-      - 27017:27017
+volumes:
+  dbdata6:
