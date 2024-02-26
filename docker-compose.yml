@@ -6,19 +6,11 @@ services:
       - "27017:27017"
     volumes:
       - dbdata6:/data/db
-
   app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "2000:2000"
-    environment:
-      - PORT=2000
-      - MONGODB_URI=mongodb://mongodb:27017/admin
-      - MONGODB_DATABASE=admin
-    depends_on:
-      - mongodb
-
+      - 2222:2000
 volumes:
   dbdata6:

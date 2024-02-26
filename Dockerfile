@@ -1,13 +1,5 @@
-FROM node:14-alpine
-
+FROM node:20.0.0
 WORKDIR /app
-
-COPY package*.json .
-
-RUN npm ci --only=production
-
 COPY . .
-
-EXPOSE 2000
-
+RUN npm install
 CMD [ "npm","start" ]
