@@ -1,5 +1,6 @@
-FROM node:20.0.0
+FROM node:alpine
 WORKDIR /app
+COPY package*.json .
+RUN npm ci
 COPY . .
-RUN npm install
 CMD [ "npm","start" ]

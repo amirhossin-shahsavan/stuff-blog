@@ -1,22 +1,24 @@
-version: "3"
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "2000:2000"
-    depends_on:
-      - mongodb
-    environment:
-      - MONGO_URL=mongodb://127.0.0.1:27017/stuff
+version: "3.9"
 
-  mongodb:
-    image: mongo:latest
+services:
+  mongo_db:
+    container_name: db_container
+    image: mongo:5.0.4
+    restart: always
     volumes:
-      - mongodb_data:/data/db
+      - mongo_db:/data/db
+
+  api:
+    build: .
     ports:
-      - "27017:27017"
+      - 2000:2000
+    environment:
+      PORT: 2000
+      MONGODB_URI: mongodb://mongo_db:27017/stuff
+      DB_NAME: stuff
+      NAME: stuff
+    depends_on:
+      - mongo_db
 
 volumes:
-  mongodb_data:
+  mongo_db:
